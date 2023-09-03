@@ -1,0 +1,48 @@
+{% extends 'base/index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card" style="margin-bottom: 30%; margin-top: 20%;">
+                <h2 class="card-title text-center">Log in now</a></h2>
+                <div class="card-body py-md-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>First name</label>
+                            {{form.first_name}}
+                        </div>
+                        <div class="form-group">
+                            <label>Last name</label>
+                            {{form.last_name}}
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            {{form.email}}
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            {{form.password1}}
+                        </div>
+                        <div class="form-group">
+                            <label>Repeat Password</label>
+                            {{form.password2}}
+                        </div>
+                        <div class="d-flex flex-row align-items-center justify-content-between">
+                            <small>Do you have an account? <a href="{% url 'login' %}">Log in</a></small>
+                            <button type='submit' class="btn btn-primary">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

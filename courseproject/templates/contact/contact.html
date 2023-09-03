@@ -1,0 +1,88 @@
+{% extends 'base/index.html' %}
+
+{% load static %}
+
+{% block content %}   
+   
+        <!-- Contact Section Begin -->
+        <div class="row px-xl-5">
+            <div class="col-lg-7 mb-5">
+                <div class="contact-form">
+                    <div id="success">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="control-group">
+                            {{ form.full_name }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            {{ form.email }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            {{ form.subject }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            {{ form.message }}
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button 
+                                class="btn btn-primary py-2 px-4"
+                                type="submit"
+                                >Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <section class="contact spad">
+            <div class="container">
+                <div class="row">
+                    {% for el in contacts %}
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                        <div class="contact__widget">
+                            <span class="icon_phone"></span>
+                            <h4>Phone</h4>
+                            <p>{{ el.phone }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                        <div class="contact__widget">
+                            <span class="icon_pin_alt"></span>
+                            <h4>Address</h4>
+                            <p>{{ el.address }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                        <div class="contact__widget">
+                            <span class="icon_clock_alt"></span>
+                            <h4>Open time</h4>
+                            <p>{{ el.open }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center">
+                        <div class="contact__widget">
+                            <span class="icon_mail_alt"></span>
+                            <h4>Email</h4>
+                            <p>{{ el.mail }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section End -->
+
+
+{% endblock %}
