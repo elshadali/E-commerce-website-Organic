@@ -30,12 +30,12 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="{{product.images.first.image.url}}" alt="">
+                                src="{% if product.images.first %}{{product.images.first.image.url}}{% endif %}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             {% for obj in product.images.all %}
-                            <img data-imgbigurl="{{obj.image.url}}"
-                                src="{{obj.image.url}}" alt="">
+                            <img data-imgbigurl="{% if obj.image %}{{obj.image.url}}{% endif %}"
+                                src="{% if obj.image %}{{obj.image.url}}{% endif %}" alt="">
                             {% endfor %}
                         </div>
                     </div>

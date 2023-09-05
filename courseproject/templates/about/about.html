@@ -30,7 +30,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="{{about.image.url}}" alt="">
+                                src="{% if about.image.url %}{{about.image.url}}{% endif %}" alt="">
                         </div>
                     </div>
                 </div>

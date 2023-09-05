@@ -94,7 +94,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="{{bl.image.url}}" alt="">
+                                <img src="{% if bl.image %}{{bl.image.url}}{% endif %}" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
