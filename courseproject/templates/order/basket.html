@@ -39,7 +39,7 @@
                 <tbody class="align-middle">
                     {% for order in orders %}
                     <tr id="{{ order.id }}" name='order-items'>
-                        <td class="align-middle"><img src="{% if order.product.image %}{{ order.product.images.first.image.url }}{% endif %}" alt="" style="width: 50px; left: -15% !important;"> {{ order.product.name }}</td>
+                        <td class="align-middle"><img src="{% if order.product.images %}{{ order.product.images.first.image.url }}{% endif %}" alt="" style="width: 50px; left: -15% !important;"> {{ order.product.name }}</td>
                         <td class="align-middle"><span id="price-{{ order.id }}">{{ order.product.price }}</span> AZN</td>
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
