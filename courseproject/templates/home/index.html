@@ -11,7 +11,7 @@
             <div class="categories__slider owl-carousel">
                 {% for category in context_categories %}
                 <div class="col-lg-3">
-                    <div class="categories__item set-bg" data-setbg="{{category.image.url}}" style="max-width: 180px; max-height: 180px;">
+                    <div class="categories__item set-bg" data-setbg="{{category.product.image.url}}" style="max-width: 180px; max-height: 180px;">
                         <h5><a href="{% url 'products_by_category' category.slug %}"  >{{category.products.count}} {{category.name}}</a></h5>
                     </div>
                 </div>
