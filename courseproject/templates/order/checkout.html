@@ -39,19 +39,21 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Card Number</label>
-                                <input class="form-control" type="number" placeholder="4169543245675326">
+                                <input onkeyup="manageOrderButton(); checkValidCardNumber()" id="card-number" class="form-control" type="number" placeholder="4169543245675326">
+                                <p class="d-none" id="card-number-error" style="font-size: 12; color: red">Kart nömrəsi 16 rəqəm olmalıdır</p>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Card Holder</label>
-                                <input class="form-control" type="text" placeholder="Rick Sanchez">
+                                <input  onkeyup="manageOrderButton()" id="card-holder" class="form-control" type="text" placeholder="Rick Sanchez">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Expire Date</label>
-                                <input class="form-control" type="text" placeholder="11/28">
+                                <input onkeyup="manageOrderButton()" id="expire-date" class="form-control" type="text" placeholder="11/28">
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>CVV</label>
-                                <input class="form-control" type="number" placeholder="123">
+                                <input onkeyup="manageOrderButton(); checkValidCvv()" id="cvv" class="form-control" type="number" placeholder="123">
+                                <p class="d-none" id="cvv-error" style="font-size: 12; color: red">CVV nömrəsi 3 rəqəm olmalıdır</p>
                             </div>
                         </div>
                     </div>
@@ -68,7 +70,7 @@
                             <div class="checkout__order__total">Shipping <span>{{main_order.shipping}}</span></div>
                             <div class="checkout__order__total">Total <span>{{main_order.total}}</span></div>
                             <!-- <a type="submit" class="site-btn" onclick="isDoneMainOrder()">PLACE ORDER</a> -->
-                            <a style="cursor: pointer; width: 280px; color: white;" class="primary-btn" onclick="isDoneMainOrder()">PLACE ORDER</a>
+                            <a id="order-button" disabled onclick="isDoneMainOrder()" style="cursor: pointer; width: 280px; color: white;" class="primary-btn">PLACE ORDER</a>
                         </div>
                     </div>
                 </div>
