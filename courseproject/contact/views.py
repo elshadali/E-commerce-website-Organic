@@ -6,7 +6,7 @@ from django.contrib import messages
 
 def contact_list(request):
 
-    contacts= Contact.objects.all()
+    contacts= Contact.objects.first()
     form = ContactForm()
 
     if request.method == 'POST':
@@ -17,7 +17,7 @@ def contact_list(request):
             return redirect(reverse("contact"))
 
     context = {
-        'contacts': contacts,
+        'contacts_info': contacts,
         'form' : form,
     }
     return render(request, 'contact/contact.html', context)

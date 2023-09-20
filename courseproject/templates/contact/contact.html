@@ -48,36 +48,34 @@
         <section class="contact spad">
             <div class="container">
                 <div class="row">
-                    {% for el in contacts %}
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_phone"></span>
                             <h4>Phone</h4>
-                            <p>{{ el.phone }}</p>
+                            <p>{{ contacts_info.phone }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_pin_alt"></span>
                             <h4>Address</h4>
-                            <p>{{ el.address }}</p>
+                            <p>{{ contacts_info.address }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_clock_alt"></span>
                             <h4>Open time</h4>
-                            <p>{{ el.open }}</p>
+                            <p>{{ contacts_info.open }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 text-center">
                         <div class="contact__widget">
                             <span class="icon_mail_alt"></span>
                             <h4>Email</h4>
-                            <p>{{ el.mail }}</p>
+                            <p>{{ contacts_info.mail }}</p>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </section>

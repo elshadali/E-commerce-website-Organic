@@ -67,3 +67,24 @@ class ProductImage(models.Model):
         verbose_name_plural = 'Mehsullarin shekilleri'
    
 
+class ProductReview(models.Model):
+    product = models.ForeignKey(
+        Product, 
+        on_delete=models.CASCADE,
+        related_name='reviews',
+    )
+    user = models.ForeignKey(
+        'account.Account',
+        on_delete=models.CASCADE,
+        related_name='reviews',
+
+    )
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.product.name
+
+    class Meta:
+        verbose_name = 'Review'
+        verbose_name_plural = 'Reviews'

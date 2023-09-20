@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Product, ProductImage, Category)
+from .models import (Product, ProductImage, Category, ProductReview)
 
 
 class InlinePointAdmin(admin.TabularInline):
@@ -18,4 +18,6 @@ class ProductAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['slug']
     prepopulated_fields = {"slug": ("name",)}
+
+admin.site.register(ProductReview)
 

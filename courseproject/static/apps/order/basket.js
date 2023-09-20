@@ -10,6 +10,7 @@ function removeRow(rowID, orderID) {
 function calcPlusTotal(ID) {
   let price = document.getElementById(`price-${ID}`).innerText;
   let quantity = parseInt(document.getElementById(`qty-${ID}`).value);
+  document.getElementById(`qty-${ID}`).value = quantity+1
   quantity += 1;
   let result = document.getElementById(`total-${ID}`).innerHTML = parseFloat((parseFloat(price) * parseFloat(quantity)).toFixed(2));
   btn = document.getElementById(`minus-button-${ID}`);
@@ -22,6 +23,7 @@ function calcPlusTotal(ID) {
 function calcMinusTotal(ID) {
   let price = document.getElementById(`price-${ID}`).innerText;
   let quantity = document.getElementById(`qty-${ID}`).value;
+  document.getElementById(`qty-${ID}`).value = quantity-1
   quantity -= 1;
   document.getElementById(`total-${ID}`).innerHTML = parseFloat((parseFloat(price) * parseFloat(quantity)).toFixed(2));
   if (parseInt(quantity) === 1) {

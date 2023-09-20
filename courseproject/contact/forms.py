@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from .models import Contact
+from .models import Contact, Message
 
 
 class ContactForm(forms.ModelForm):
@@ -23,5 +23,5 @@ class ContactForm(forms.ModelForm):
     }))
 
     class Meta:
-        model = Contact
+        model = Message
         fields = ['full_name', 'email', 'subject', 'message']
