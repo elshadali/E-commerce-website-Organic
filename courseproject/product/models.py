@@ -27,6 +27,11 @@ class Product(models.Model):
     price_currency = models.CharField(max_length=50, choices=CURRENCIES, default = 'AZN')
     category = models.ManyToManyField('product.Category', related_name='products')
     slug = models.SlugField(unique=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        null=True,
+        blank=True,
+    )
 
 
     def __str__(self):

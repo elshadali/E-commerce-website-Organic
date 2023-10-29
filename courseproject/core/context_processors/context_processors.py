@@ -1,5 +1,5 @@
 from order.models import OrderItem, WishList
-from product.models import Category
+from product.models import Category, Product
 from contact.models import Contact
 from about.models import SocialMedia
 
@@ -20,3 +20,12 @@ def header_and_footer(request):
 
 
     return context
+
+
+# def latest(request):
+
+#     context = {
+#         'latest_product' : Product.objects.all().order_by('-created_at')
+#     }
+
+#     return context

@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.views import generic
@@ -15,18 +17,29 @@ def products_by_category(request, category_slug):
     return render(request, 'product/products_by_category.html', context)
 
 
-def products_list(request):
-    products = Product.objects.all()[:10]
-    context = {
-        'products': products,
-    }
-    return render(request, 'product/product_list.html', context)
-
 class ProductListView(generic.ListView):
     template_name = 'product/product_list.html'
     model = Product
     context_object_name = 'products'
-    paginate_by = 3
+    paginate_by = 6
+
+    def get_queryset(self, *args, **kwargs) -> QuerySet[Any]:
+
+        qs = super(ProductListView, self).get_queryset(*args, **kwargs) 
+        sort_by = self.request.GET.get('sortBy')
+        if sort_by == 'lowest':
+            qs = qs.order_by('price')
+        elif sort_by == 'highest':
+            qs = qs.order_by('-price')
+        elif sort_by == 'new':
+            qs = qs.order_by('-created_at')
+
+        return qs
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['sortBy'] = self.request.GET.get('sortBy')
+        return context
 
 
 def product_detail(request, product_slug):

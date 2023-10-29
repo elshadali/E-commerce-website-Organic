@@ -22,7 +22,7 @@ class Message(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.full_name, self.subject
+        return f'{self.full_name}, {self.subject}'
     
     class Meta:
         verbose_name = 'message'

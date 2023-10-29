@@ -26,16 +26,14 @@
 <section class="product spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-5">
-                <div class="sidebar">
-                    <div class="sidebar__item">
-                        <h4>Department</h4>
-                        <ul>
-                            {% for category in context_categories %}
-                            <li><a href="">{{ category.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+            <div class="col-lg-4 col-md-5">
+                <div class="filter__sort">
+                    <span>Sort By</span>
+                    <select class="form-select form-select-sm" id="sortBy" name="sortBy" onchange="location = this.value;">
+                        <option value="?sortBy=new" {% if sortBy == 'new' %}selected{% endif %}>New</option>
+                        <option value="?sortBy=lowest" {% if sortBy == 'lowest' %}selected{% endif %}>Lowest</option>
+                        <option value="?sortBy=highest" {% if sortBy == 'highest' %}selected{% endif %}>Highest</option>
+                    </select>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -62,7 +60,7 @@
                         <ul class="pagination justify-content-center mb-3">
                         {% if page_obj.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}" aria-label="Previous">
                                     <span aria-hidden="true" style="color: black;">&laquo;</span>
                                     <span class="sr-only">Previous</span>
                                 </a>
@@ -83,14 +81,14 @@
                             </li>
                             {% elif page_number > page_obj.number|add:'-3' and page_number < page_obj.number|add:'3' %}
                             <li class="page-item">
-                                <a class="page-link" style="color: black;" href="?page={{ page_number }}">{{ page_number }}</a>
+                                <a class="page-link" style="color: black;" href="?page={{ page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}">{{ page_number }}</a>
                             </li>
                             {% endif %}
                         {% endfor %}
 
                         {% if page_obj.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if sortBy %}&sortBy={{ sortBy }}{% endif %}" aria-label="Next">
                                     <span aria-hidden="true" style="color: black;">&raquo;</span>
                                     <span class="sr-only">Next</span>
                                 </a>

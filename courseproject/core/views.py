@@ -7,11 +7,10 @@ def index(request):
 
    context = {
       'featured_products' : Product.objects.all()[:8],
-      'latest_products' : Product.objects.all()[:3],
+      'latest_products' : Product.objects.all().order_by('-created_at')[:3],
       'top_rated_products' : Product.objects.all()[:3],
       'review_products' : Product.objects.all()[:3],
       'bloqs' : Bloq.objects.all()[:3]
-
    }
    return render(request, 'home/index.html', context)
 
